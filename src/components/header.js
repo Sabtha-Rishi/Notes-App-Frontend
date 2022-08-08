@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Header = () => {
-  const [tab, setTab] = useState(0);
+  // const [tab, setTab] = useState(0);
   return (
     <HeaderContainer>
       <ul className="tabs">
