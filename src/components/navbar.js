@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { TiPlus } from "react-icons/ti";
-import {FaUserAlt} from 'react-icons/fa'
-import {RiSettings3Fill} from 'react-icons/ri'
+// import {FaUserAlt} from 'react-icons/fa'
+// import {RiSettings3Fill} from 'react-icons/ri'
 
 const navbar = () => {
   return (
