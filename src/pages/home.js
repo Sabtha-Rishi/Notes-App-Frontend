@@ -2,16 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
-import TodoList from "../components/todoList";
+import Todo from "../tabs/todo";
 import AccountsAPI from "../api/accounts.api";
+import Header from "../components/header";
 
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
+  const [tab, setTab] = useState("0");
   const [user, setUser] = useState({});
-  const [isEditing, setIsEditing] = useState(false);
-  const [isUpdated, setIsUpdated] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+
+
+  const TABS_DATA = [<Todo />];
+
+  console.log(TABS_DATA[tab]);
 
   useEffect(() => {
     AccountsAPI.getUser(setIsAuthenticated, setUser, setIsLoading, navigate);
@@ -23,9 +29,11 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   }, [isAuthenticated]);
 
+  
   return (
     <HomeContainer>
-      <TodoList />
+      <Header tab={tab} setTab={setTab} />
+      {TABS_DATA[parseInt(tab)]}
     </HomeContainer>
   );
 };

@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
-const Header = () => {
-  // const [tab, setTab] = useState(0);
+const Header = ({ tab, setTab }) => {
+  const switchTab = (e) => {
+    setTab(e.target.value);
+  };
   return (
     <HeaderContainer>
       <ul className="tabs">
-        <button className="tab "> Todo</button>
-        <button className="tab "> Money</button>
-        <button className="tab "> Track</button>
-        <button className="tab "> List</button>
+        <button className="tab " value="0" onClick={switchTab}>
+          {" "}
+          Todo
+        </button>
+        <button className="tab " value="1" onClick={switchTab}>
+          {" "}
+          Money
+        </button>
+        <button className="tab " value="2">
+          {" "}
+          Track
+        </button>
+        <button className="tab " value="3">
+          {" "}
+          List
+        </button>
       </ul>
     </HeaderContainer>
   );

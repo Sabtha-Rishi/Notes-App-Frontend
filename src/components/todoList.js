@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Data from "./_data";
 import styled from "styled-components";
+import TodoAPI from "../api/todo.api";
+import Loading from "../pages/loading";
 
 import TodoItem from "./todoItem";
-const singleTodo = () => {
+
+const AllTodos = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isUpdated, setIsUpdated] = useState(false);
+
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    TodoAPI.allTodos(setTodos, setIsLoading);
+  }, []);
+
+  useEffect(() => {
+    TodoAPI.allTodos(setTodos, setIsLoading);
+  }, [isUpdated]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <TodoContainer>
-      {Data.todoList.map((todo) => {
-        return <TodoItem todo={todo} key={todo.id} />;
+      {todos.map((todo) => {
+        return (
+          <TodoItem todo={todo} key={todo._id} setIsUpdated={setIsUpdated} />
+        );
       })}
     </TodoContainer>
   );
 };
 
-export default singleTodo;
+export default AllTodos;
 
 const TodoContainer = styled.div`
   display: flex;

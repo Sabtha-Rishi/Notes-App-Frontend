@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
+import TodoAPI from "../api/todo.api";
 
 import styled from "styled-components";
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, setIsUpdated }) => {
   const [isCompleted, setIsCompleted] = useState(todo.isCompleted);
-  const [isDeleted, setIsDeleted] = useState(false);
-
-  const handleDelete = () => {
-    setIsDeleted(true);
-  };
+  const [isDeleted, setIsDeleted] = useState(todo.isArchieved);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {}, []);
 
   const handleComplete = () => {
-    setIsCompleted((prev) => !prev);
+    setIsLoading(true);
+    TodoAPI.updateTodo(
+      setIsUpdated,
+      setIsLoading,
+      todo._id,
+      isCompleted,
+      setIsCompleted
+    );
+  };
+
+  const handleDelete = () => {
+    setIsLoading(true);
+    TodoAPI.deleteTodo(setIsUpdated, setIsLoading, todo._id, setIsDeleted);
   };
 
   return !isDeleted ? (
     <SingleTodo>
       <div className="todo-item">
-        {isCompleted ? (
+        {todo.isCompleted ? (
           <button
             className="checkbox complete"
             onClick={handleComplete}
@@ -27,7 +37,7 @@ const TodoItem = ({ todo }) => {
         ) : (
           <button className="checkbox" onClick={handleComplete}></button>
         )}
-        {isCompleted ? (
+        {todo.isCompleted ? (
           <div className="task-complete">{todo.task}</div>
         ) : (
           <div className="task">{todo.task}</div>
@@ -54,6 +64,8 @@ const SingleTodo = styled.div`
     display: flex;
     gap: 20px;
     align-items: center;
+    /* padding-top: 10px; */
+    margin: auto 0;
   }
   .checkbox {
     border: 2px solid black;

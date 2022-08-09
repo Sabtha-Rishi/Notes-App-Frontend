@@ -113,9 +113,6 @@ const LoginForm = styled.div`
     padding-left: 10px;
   }
 
-  .input:placeholder-shown {
-    padding-left: 10px;
-  }
   @media only screen and (max-width: 600px) {
     .input {
       width: 80vw;
