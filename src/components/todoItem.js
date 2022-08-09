@@ -63,7 +63,7 @@ const SingleTodo = styled.div`
     min-height: 20px;
     border-radius: 100%;
     cursor: pointer;
-    background-color: #faeade;
+    background-color: white;
   }
 
   .task {
@@ -75,7 +75,7 @@ const SingleTodo = styled.div`
     opacity: 50%;
   }
   .complete {
-    background-color: #fab37f;
+    background-color: #5397db;
   }
   .delete {
     font-size: 15px;

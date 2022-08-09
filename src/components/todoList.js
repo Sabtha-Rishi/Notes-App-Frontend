@@ -26,7 +26,8 @@ const TodoContainer = styled.div`
   background-color: #fafafa;
   box-shadow: 10px 20px 20px #e3e3e3;
   gap: 10px;
-  background-color: #faeade;
+  background-color: #f7f9fb;
+  border: 1px solid lighgrey;
 
   .password {
     backdrop-filter: blur(50px);
