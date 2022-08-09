@@ -1,8 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import {useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import TodoList from "../components/todoList";
+import AccountsAPI from "../api/accounts.api";
 
-const home = () => {
+const Home = ({ isAuthenticated, setIsAuthenticated }) => {
+  const [user, setUser] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [isUpdated, setIsUpdated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    AccountsAPI.getUser(setIsAuthenticated, setUser, setIsLoading);
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/accounts/login");
+    }
+  }, [isAuthenticated]);
+
   return (
     <HomeContainer>
       <TodoList />
@@ -10,6 +30,6 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;
 
 const HomeContainer = styled.div``;

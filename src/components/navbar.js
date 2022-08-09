@@ -29,7 +29,7 @@ export default navbar;
 const NavContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background: transparent;
+  background: white;
   height: 45px;
   border-radius: 5px;
   position: fixed;
