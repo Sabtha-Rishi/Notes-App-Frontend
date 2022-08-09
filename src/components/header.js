@@ -58,6 +58,8 @@ const HeaderContainer = styled.div`
 
   .tab:focus {
     border: 2px solid black;
-    box-shadow: 10px 20px 20px #e3e3e3;
+    box-shadow: 1px 20px 25px #d9d9d9;
+    /* background-color: #0f1d4c;
+    color: white; */
   }
 `;

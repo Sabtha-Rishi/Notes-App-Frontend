@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
+import TodoList from "../components/todoList";
 
 const home = () => {
-  return <HomeContainer></HomeContainer>;
+  return (
+    <HomeContainer>
+      <TodoList />
+    </HomeContainer>
+  );
 };
 
 export default home;
