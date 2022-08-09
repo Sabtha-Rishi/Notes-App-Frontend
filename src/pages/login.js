@@ -6,7 +6,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 
 import AccountsAPI from "../api/accounts.api";
 
-const Login = ({ isAuthenticated, setIsAutenticated }) => {
+const Login = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +32,7 @@ const Login = ({ isAuthenticated, setIsAutenticated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    AccountsAPI.login(loginData, setIsAutenticated, setIsLoading);
+    AccountsAPI.login(loginData, setIsAuthenticated, setIsLoading);
   };
 
   if (isLoading) {

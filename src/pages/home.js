@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import TodoList from "../components/todoList";
@@ -14,11 +14,11 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    AccountsAPI.getUser(setIsAuthenticated, setUser, setIsLoading);
+    AccountsAPI.getUser(setIsAuthenticated, setUser, setIsLoading, navigate);
   }, []);
 
   useEffect(() => {
-    if (!isAuthenticated) {
+    if (!isAuthenticated & !isLoading) {
       navigate("/accounts/login");
     }
   }, [isAuthenticated]);

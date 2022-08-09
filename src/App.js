@@ -32,7 +32,7 @@ function App() {
           element={
             <Home
               isAuthenticated={isAuthenticated}
-              setIsAutenticated={setIsAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
             />
           }
         />
@@ -42,7 +42,7 @@ function App() {
           element={
             <Login
               isAuthenticated={isAuthenticated}
-              setIsAutenticated={setIsAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
             />
           }
         />

@@ -30,6 +30,7 @@ const login = async (data, setIsAuthenticated, setIsLoading) => {
       console.log("Success");
     }
   } catch (err) {
+    setIsAuthenticated(false);
     console.log(err.message);
   } finally {
     setIsLoading(false);
@@ -53,7 +54,8 @@ const login = async (data, setIsAuthenticated, setIsLoading) => {
 //   }
 // };
 
-const getUser = async (setIsAuthenticated, setUser, setIsLoading) => {
+const getUser = async (setIsAuthenticated, setUser, setIsLoading, navigate) => {
+  console.log(setIsAuthenticated, "test");
   try {
     const response = await axios.create().get(`${BASE_URL}accounts/user/`);
     if (response.data.isAuthenticated) {
@@ -67,27 +69,15 @@ const getUser = async (setIsAuthenticated, setUser, setIsLoading) => {
       setIsAuthenticated(false);
       console.log(response);
       console.log("fetch-fail", response.data);
+      navigate("accounts/login");
     }
   } catch (err) {
     console.log(err.message);
+    setIsAuthenticated(false);
+    navigate("accounts/login");
   } finally {
     setIsLoading(false);
     console.log("called");
-  }
-};
-
-const getSingleUser = async (setUser, id) => {
-  try {
-    const response = await axios.create().get(`${BASE_URL}accounts/${id}/`);
-
-    if (response.data.isSuccess) {
-      setUser(response.data.user);
-    }
-    if (!response.data.isSuccess) {
-      setUser({});
-    }
-  } catch (err) {
-    console.log(err.message);
   }
 };
 
