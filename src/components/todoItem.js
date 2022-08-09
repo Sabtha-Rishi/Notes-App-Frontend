@@ -1,7 +1,5 @@
-import { findAllByDisplayValue } from "@testing-library/react";
 import React, { useState, useEffect } from "react";
-import { BsCircle } from "react-icons/bs";
-import { GrFormClose } from "react-icons/gr";
+
 import styled from "styled-components";
 
 const TodoItem = ({ todo }) => {
