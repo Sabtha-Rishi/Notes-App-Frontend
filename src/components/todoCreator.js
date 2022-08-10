@@ -44,7 +44,6 @@ const NewTodo = styled.div`
   overflow: hidden;
   transition-duration: 0.4s;
   background-color: black;
-  box-shadow: 10px 20px 20px #e3e3e3;
   gap: 10px;
   background-color: #f7f9fb;
   border-radius: 7px;

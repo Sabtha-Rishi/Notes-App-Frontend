@@ -39,7 +39,7 @@ const TodoContainer = styled.div`
   overflow: hidden;
   transition-duration: 0.4s;
   background-color: #fafafa;
-  box-shadow: 10px 20px 20px #e3e3e3;
+  box-shadow: 10px 10px 25px #e3e3e3;
   /* gap: 10px; */
   background-color: #f7f9fb;
   border: 1px solid lighgrey;

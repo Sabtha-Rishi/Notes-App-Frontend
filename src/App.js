@@ -46,7 +46,7 @@ function App() {
         />
         <Route exact path="/accounts/register" element={<Register />} />
       </Routes>
-      <NavBar />
+      {/* <NavBar /> */}
     </Router>
   );
 }
