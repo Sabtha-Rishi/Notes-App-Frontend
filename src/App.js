@@ -5,7 +5,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Loading from "./pages/loading";
-import NavBar from "./components/navbar";
+// import NavBar from "./components/navbar";
 
 import AccountsAPI from "./api/accounts.api";
 
