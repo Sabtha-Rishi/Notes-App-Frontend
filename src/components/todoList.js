@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import TodoAPI from "../api/todo.api";
-import Loading from "../pages/loading";
 
 import TodoItem from "./todoItem";
 
