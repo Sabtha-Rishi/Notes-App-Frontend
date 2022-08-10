@@ -17,10 +17,11 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const TABS_DATA = [<Todo />];
 
   console.log(TABS_DATA[tab]);
+  /* eslint-disable */
 
   useEffect(() => {
     AccountsAPI.getUser(setIsAuthenticated, setUser, setIsLoading, navigate);
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (!isAuthenticated & !isLoading) {
@@ -28,8 +29,8 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   }, [isAuthenticated]);
 
-  console.log(user)
-
+  console.log(user);
+  /* eslint-enable */
   return (
     <HomeContainer>
       <Header tab={tab} setTab={setTab} />

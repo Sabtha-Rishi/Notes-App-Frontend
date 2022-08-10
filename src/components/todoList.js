@@ -7,7 +7,7 @@ import TodoItem from "./todoItem";
 
 const AllTodos = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
   const [todos, setTodos] = useState([]);
-
+  /* eslint-disable */
   useEffect(() => {
     TodoAPI.allTodos(setTodos, setIsLoading);
   }, []);
@@ -15,7 +15,7 @@ const AllTodos = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
   useEffect(() => {
     TodoAPI.allTodos(setTodos, setIsLoading);
   }, [isUpdated]);
-
+  /* eslint-enable */
   if (isLoading) {
     return <Loading />;
   }

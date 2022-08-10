@@ -16,7 +16,7 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
     email: email,
     password: password,
   };
-
+  /* eslint-disable */
   useEffect(() => {
     if (isAuthenticated) {
       navigate("/");
@@ -28,7 +28,7 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
       navigate("/");
     }
   }, [isAuthenticated]);
-
+  /* eslint-enable */
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
