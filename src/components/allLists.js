@@ -6,7 +6,7 @@ import ListAPI from "../api/list.api";
 
 const AllLists = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
   const [lists, setLists] = useState([]);
-
+  /* eslint-disable */
   useEffect(() => {
     ListAPI.allLists(setLists, setIsLoading);
   }, []);
@@ -14,7 +14,7 @@ const AllLists = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
   useEffect(() => {
     ListAPI.allLists(setLists, setIsLoading);
   }, [isUpdated]);
-
+  /* eslint-enable */
   if (isLoading) {
     return <Loading />;
   }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ListAPI from "../api/list.api";
-import TodoItem from "./todoItem";
 import TodoList from "./todoList";
 
 const ListItem = ({ listID }) => {
@@ -9,7 +8,7 @@ const ListItem = ({ listID }) => {
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
-
+  /* eslint-disable */
   useEffect(() => {
     ListAPI.SingleList(setList, setTodos, setIsLoading, listID);
   }, []);
@@ -17,7 +16,7 @@ const ListItem = ({ listID }) => {
   useEffect(() => {
     ListAPI.SingleList(setList, setTodos, setIsLoading, listID);
   }, [isUpdated]);
-
+  /* eslint-enable */
   if (isLoading) {
     return <></>;
   }
@@ -60,8 +59,8 @@ const SingleList = styled.div`
     flex-direction: column;
   }
 
-  .list-title{
-    font-weight:bold;
+  .list-title {
+    font-weight: bold;
     margin: 0;
   }
   .list-desc {
