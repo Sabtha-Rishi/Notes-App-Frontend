@@ -31,7 +31,7 @@ const AllLists = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
   return (
     <TodoContainer>
       <button className="create-list-btn" onClick={toggleVisibility}>
-        {isVisible ? (
+        {!isVisible ? (
           <p className="btn-text">
             New <TiArrowSortedDown />
           </p>
@@ -41,7 +41,7 @@ const AllLists = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
           </p>
         )}
       </button>
-      {!isVisible && (
+      {isVisible && (
         <div className="new-list">
           <ListCreator
             setIsUpdated={setIsUpdated}
