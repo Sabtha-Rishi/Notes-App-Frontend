@@ -7,13 +7,12 @@ import AccountsAPI from "../api/accounts.api";
 import Header from "../components/header";
 
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
-  const [tab, setTab] = useState("0");
+  const [tab, setTab] = useState("");
   const [user, setUser] = useState({});
 
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
-
 
   const TABS_DATA = [<Todo />];
 
@@ -29,7 +28,6 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   }, [isAuthenticated]);
 
-  
   return (
     <HomeContainer>
       <Header tab={tab} setTab={setTab} />

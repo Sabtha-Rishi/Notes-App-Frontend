@@ -6,10 +6,7 @@ import Loading from "../pages/loading";
 
 import TodoItem from "./todoItem";
 
-const AllTodos = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isUpdated, setIsUpdated] = useState(false);
-
+const AllTodos = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
@@ -46,14 +43,10 @@ const TodoContainer = styled.div`
   transition-duration: 0.4s;
   background-color: #fafafa;
   box-shadow: 10px 20px 20px #e3e3e3;
-  gap: 10px;
+  /* gap: 10px; */
   background-color: #f7f9fb;
   border: 1px solid lighgrey;
-  .password {
-    backdrop-filter: blur(50px);
-    z-index: 50;
-    border-radius: 5px;
-  }
+
   @media only screen and (max-width: 600px) {
     & {
       min-width: 90vw;

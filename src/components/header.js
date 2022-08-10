@@ -8,19 +8,36 @@ const Header = ({ tab, setTab }) => {
   return (
     <HeaderContainer>
       <ul className="tabs">
-        <button className="tab " value="0" onClick={switchTab}>
+        <button
+          className={tab == "0" ? "tab active" : "tab"}
+          value="0"
+          onClick={switchTab}
+        >
           {" "}
           Todo
         </button>
-        <button className="tab " value="1" onClick={switchTab}>
+        <button
+          className={tab == "1" ? "tab active" : "tab"}
+          value="1"
+          onClick={switchTab}
+        >
           {" "}
           Money
         </button>
-        <button className="tab " value="2">
+
+        <button
+          className={tab == "2" ? "tab active" : "tab"}
+          value="2"
+          onClick={switchTab}
+        >
           {" "}
           Track
         </button>
-        <button className="tab " value="3">
+        <button
+          className={tab == "3" ? "tab active" : "tab"}
+          value="3"
+          onClick={switchTab}
+        >
           {" "}
           List
         </button>
@@ -70,10 +87,8 @@ const HeaderContainer = styled.div`
     background: none;
   }
 
-  .tab:focus {
+  .active {
     border: 2px solid black;
     box-shadow: 1px 20px 25px #d9d9d9;
-    /* background-color: #0f1d4c;
-    color: white; */
   }
 `;

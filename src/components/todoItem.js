@@ -58,7 +58,7 @@ const SingleTodo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 30px;
+  padding: 15px 30px;
 
   .todo-item {
     display: flex;

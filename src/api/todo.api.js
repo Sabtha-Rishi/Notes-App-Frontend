@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// const BASE_URL = "https://one-drop.herokuapp.com/";
-const BASE_URL = "http://localhost:8000/";
+const BASE_URL = "https://noote-api.herokuapp.com/";
+// const BASE_URL = "http://localhost:8000/";
 
 const allTodos = async (setTodos, setIsLoading) => {
   try {
@@ -72,10 +72,29 @@ const deleteTodo = async (setIsUpdated, setIsLoading, todoID, setIsDeleted) => {
   }
 };
 
+const createTodo = async (setIsUpdated, setIsLoading, data, setNewTask) => {
+  try {
+    const response = await axios.create().post(`${BASE_URL}todo/new`, data);
+
+    if (response.data.success) {
+      setIsUpdated((prev) => !prev);
+      setNewTask("");
+    }
+    if (!response.data.success) {
+      console.log("couldn't create todo");
+    }
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 const TodoAPI = {
   allTodos,
   updateTodo,
   deleteTodo,
+  createTodo,
 };
 
 export default TodoAPI;
