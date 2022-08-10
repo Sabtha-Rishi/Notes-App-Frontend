@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import TodoAPI from "../api/todo.api";
+import ListAPI from "../api/list.api";
 
-const TodoCreator = ({ setIsUpdated, setIsLoading }) => {
+const TodoCreator = ({ setIsUpdated, setIsLoading, isToList, listID }) => {
   const [newTask, setNewTask] = useState("");
 
   const createTodo = (e) => {
@@ -12,7 +13,13 @@ const TodoCreator = ({ setIsUpdated, setIsLoading }) => {
       task: newTask,
     };
     setIsLoading(true);
-    TodoAPI.createTodo(setIsUpdated, setIsLoading, data, setNewTask);
+
+    if (isToList) {
+      data.listID = listID;
+      ListAPI.addToList(setIsUpdated, setIsLoading, data);
+    } else {
+      TodoAPI.createTodo(setIsUpdated, setIsLoading, data, setNewTask);
+    }
   };
   return (
     <NewTodo>
@@ -39,7 +46,7 @@ const NewTodo = styled.div`
   display: flex;
   flex-direction: column;
   border: none;
-  width: 50vw;
+  width: 49vw;
   margin: 30px auto;
   overflow: hidden;
   transition-duration: 0.4s;
@@ -52,13 +59,14 @@ const NewTodo = styled.div`
   border: 1px solid lightgrey;
 
   .input {
-    height: 50px;
-    font-size: 20px;
+    height: 40px;
+    font-size: 15px;
     color: black;
     background: none;
     border-radius: 7px;
     border: none;
     min-width: 80%;
+    margin: 0 5px;
 
     /* border: none; */
   }
@@ -77,6 +85,7 @@ const NewTodo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: none;
   }
   .add-btn {
     display: flex;
@@ -90,8 +99,8 @@ const NewTodo = styled.div`
 
   @media only screen and (max-width: 600px) {
     & {
-      min-width: 90vw;
-      max-width: 90vw;
+      min-width: 89vw;
+      max-width: 89vw;
       margin: 30px auto;
     }
   }

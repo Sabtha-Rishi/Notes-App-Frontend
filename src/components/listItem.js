@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ListAPI from "../api/list.api";
 import TodoList from "./todoList";
+import TodoCreator from "./todoCreator";
 
 const ListItem = ({ listID }) => {
   const [list, setList] = useState([]);
@@ -17,6 +18,7 @@ const ListItem = ({ listID }) => {
     ListAPI.SingleList(setList, setTodos, setIsLoading, listID);
   }, [isUpdated]);
   /* eslint-enable */
+
   if (isLoading) {
     return <></>;
   }
@@ -25,6 +27,14 @@ const ListItem = ({ listID }) => {
       <div className="list-details">
         <h3 className="list-title">{list.title}</h3>
         <p className="list-desc">{list.desc}</p>
+      </div>
+      <div className="add-to-todo">
+        <TodoCreator
+          setIsUpdated={setIsUpdated}
+          setIsLoading={setIsLoading}
+          isToList={true}
+          listID={list._id}
+        />
       </div>
       <div className="todo-container">
         <TodoList
@@ -65,6 +75,9 @@ const SingleList = styled.div`
   }
   .list-desc {
     font-size: 15px;
+  }
+  .add-to-todo {
+    margin-right: 10px;
   }
 
   @media only screen and (max-width: 600px) {

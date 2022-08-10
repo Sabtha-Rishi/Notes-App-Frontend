@@ -57,10 +57,29 @@ const createList = async (setIsUpdated, setIsLoading, data, setIsVisible) => {
   }
 };
 
+const addToList = async (setIsUpdated, setIsLoading, data) => {
+  try {
+    const response = await axios
+      .create()
+      .post(`${BASE_URL}list/add-todo`, data);
+    if (response.data.success) {
+      setIsUpdated((prev) => !prev);
+    }
+    if (!response.data.success) {
+      console.log("couldn't add todo to list");
+      console.log(response.data);
+    }
+  } catch {
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 const ListAPI = {
   allLists,
   SingleList,
   createList,
+  addToList,
 };
 
 export default ListAPI;
