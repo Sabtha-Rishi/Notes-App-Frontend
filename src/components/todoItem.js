@@ -30,7 +30,7 @@ const TodoItem = ({ todo, setIsUpdated }) => {
   if(isLoading){
     return <Loading/>
   }
-  return !isDeleted ? (
+  return !isDeleted & !todo.isHidden? (
     <SingleTodo>
       <div className="todo-item">
         {todo.isCompleted ? (
