@@ -5,25 +5,25 @@ import Loading from "../pages/loading";
 
 import TodoItem from "./todoItem";
 
-const AllTodos = ({ isLoading, isUpdated, setIsLoading, setIsUpdated }) => {
-  const [todos, setTodos] = useState([]);
-  /* eslint-disable */
-  useEffect(() => {
-    TodoAPI.allTodos(setTodos, setIsLoading);
-  }, []);
-
-  useEffect(() => {
-    TodoAPI.allTodos(setTodos, setIsLoading);
-  }, [isUpdated]);
-  /* eslint-enable */
-  if (isLoading) {
-    return <Loading />;
-  }
+const AllTodos = ({
+  isLoading,
+  isUpdated,
+  setIsLoading,
+  setIsUpdated,
+  todos,
+  setTodos,
+  hidden
+}) => {
   return (
     <TodoContainer>
       {todos.map((todo) => {
         return (
-          <TodoItem todo={todo} key={todo._id} setIsUpdated={setIsUpdated} />
+          <TodoItem
+            todo={todo}
+            key={todo._id}
+            setIsUpdated={setIsUpdated}
+            hidden={hidden}
+          />
         );
       })}
     </TodoContainer>

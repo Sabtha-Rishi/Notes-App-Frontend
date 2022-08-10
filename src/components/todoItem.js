@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import TodoAPI from "../api/todo.api";
-import Loading from '../pages/loading'
+import Loading from "../pages/loading";
 
 import styled from "styled-components";
 
-const TodoItem = ({ todo, setIsUpdated }) => {
+const TodoItem = ({ todo, setIsUpdated, hidden }) => {
   const [isCompleted, setIsCompleted] = useState(todo.isCompleted);
   const [isDeleted, setIsDeleted] = useState(todo.isArchieved);
   const [isLoading, setIsLoading] = useState(false);
-
 
   const handleComplete = () => {
     setIsLoading(true);
@@ -26,11 +25,10 @@ const TodoItem = ({ todo, setIsUpdated }) => {
     TodoAPI.deleteTodo(setIsUpdated, setIsLoading, todo._id, setIsDeleted);
   };
 
-
-  if(isLoading){
-    return <Loading/>
+  if (isLoading) {
+    return <Loading />;
   }
-  return !isDeleted & !todo.isHidden? (
+  return !isDeleted & todo.isHidden==hidden ? (
     <SingleTodo>
       <div className="todo-item">
         {todo.isCompleted ? (
