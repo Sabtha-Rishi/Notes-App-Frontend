@@ -6,7 +6,6 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Loading from "./pages/loading";
 import NavBar from "./components/navbar";
-import Header from "./components/header";
 
 import AccountsAPI from "./api/accounts.api";
 
