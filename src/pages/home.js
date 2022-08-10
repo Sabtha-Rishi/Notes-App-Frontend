@@ -20,13 +20,15 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
 
   useEffect(() => {
     AccountsAPI.getUser(setIsAuthenticated, setUser, setIsLoading, navigate);
-  }, []);
+  },[]);
 
   useEffect(() => {
     if (!isAuthenticated & !isLoading) {
       navigate("/accounts/login");
     }
   }, [isAuthenticated]);
+
+  console.log(user)
 
   return (
     <HomeContainer>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const Header = ({ tab, setTab }) => {
@@ -9,7 +9,7 @@ const Header = ({ tab, setTab }) => {
     <HeaderContainer>
       <ul className="tabs">
         <button
-          className={tab == "0" ? "tab active" : "tab"}
+          className={tab === "0" ? "tab active" : "tab"}
           value="0"
           onClick={switchTab}
         >
@@ -17,7 +17,7 @@ const Header = ({ tab, setTab }) => {
           Todo
         </button>
         <button
-          className={tab == "1" ? "tab active" : "tab"}
+          className={tab === "1" ? "tab active" : "tab"}
           value="1"
           onClick={switchTab}
         >
@@ -26,7 +26,7 @@ const Header = ({ tab, setTab }) => {
         </button>
 
         <button
-          className={tab == "2" ? "tab active" : "tab"}
+          className={tab === "2" ? "tab active" : "tab"}
           value="2"
           onClick={switchTab}
         >
@@ -34,7 +34,7 @@ const Header = ({ tab, setTab }) => {
           Track
         </button>
         <button
-          className={tab == "3" ? "tab active" : "tab"}
+          className={tab === "3" ? "tab active" : "tab"}
           value="3"
           onClick={switchTab}
         >
