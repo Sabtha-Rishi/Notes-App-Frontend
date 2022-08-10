@@ -1,7 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const BASE_URL = "http://localhost:8000/";
+// const BASE_URL = "http://localhost:8000/";
+const BASE_URL = "https://noote-api.herokuapp.com/";
 
 const allLists = async (setLists, setIsLoading) => {
   try {
@@ -31,7 +32,7 @@ const SingleList = async (setList, setTodos, setIsLoading, listID) => {
     }
     if (!response.data.success) {
       console.log("couldn't fetch list");
-      console.log(response.data)
+      console.log(response.data);
     }
   } catch {
   } finally {
