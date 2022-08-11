@@ -1,23 +1,24 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const BASE_URL = "https://noote-api.herokuapp.com/";
-// const BASE_URL = "http://localhost:8000/";
+// const BASE_URL = "https://noote-api.herokuapp.com/";
+const BASE_URL = "http://localhost:8000/";
 
-// const register = async (newUser) => {
-//   try {
-//     const response = await axios
-//       .create()
-//       .post(`${BASE_URL}accounts/register/`, newUser, {
-//         headers: {
-//           "content-type": "multipart/form-data",
-//         },
-//       });
-//     return response.data.isSuccess;
-//   } catch (err) {
-//     // console.log(err.message);
-//   }
-// };
+const register = async (newUser, setIsAuthenticated, setIsLoading) => {
+  try {
+    const response = await axios
+      .create()
+      .post(`${BASE_URL}accounts/register/`, newUser, {});
+    if (response.data.isAuthenticated) {
+      setIsAuthenticated(true);
+    }
+  } catch (err) {
+    console.log(err.message);
+    setIsAuthenticated(false);
+  } finally {
+    setIsLoading(false);
+  }
+};
 
 const login = async (data, setIsAuthenticated, setIsLoading) => {
   try {
@@ -117,7 +118,7 @@ const isAuthenticated = async (setIsAuthenticated, setIsLoading) => {
 // };
 
 const AccountsAPI = {
-  //   register,
+  register,
   login,
   getUser,
   //   updateUser,

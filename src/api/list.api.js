@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// const BASE_URL = "http://localhost:8000/";
-const BASE_URL = "https://noote-api.herokuapp.com/";
+const BASE_URL = "http://localhost:8000/";
+// const BASE_URL = "https://noote-api.herokuapp.com/";
 
 const allLists = async (setLists, setIsLoading) => {
   try {
@@ -75,9 +75,31 @@ const addToList = async (setIsUpdated, setIsLoading, data) => {
   }
 };
 
+const deleteList = async (setIsUpdated, setIsLoading, listID) => {
+  try {
+    const response = await axios
+      .create()
+      .post(`${BASE_URL}list/${listID}/update`, {
+        isArchieved: true,
+      });
+
+    if (response.data.success) {
+      setIsUpdated((prev) => !prev);
+    }
+    if (!response.data.success) {
+      console.log("couldn't delete list");
+    }
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 const ListAPI = {
   allLists,
   SingleList,
+  deleteList,
   createList,
   addToList,
 };

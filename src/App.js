@@ -44,7 +44,16 @@ function App() {
             />
           }
         />
-        <Route exact path="/accounts/register" element={<Register />} />
+        <Route
+          exact
+          path="/accounts/register"
+          element={
+            <Register
+              isAuthenticated={isAuthenticated}
+              setIsAuthenticated={setIsAuthenticated}
+            />
+          }
+        />
       </Routes>
       {/* <NavBar /> */}
     </Router>

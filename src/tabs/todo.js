@@ -23,6 +23,7 @@ const Todo = () => {
   }
   return (
     <div>
+      <br></br>
       <TodoCreator
         setIsUpdated={setIsUpdated}
         setIsLoading={setIsLoading}

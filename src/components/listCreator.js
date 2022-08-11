@@ -84,6 +84,7 @@ const NewList = styled.div`
 
   .input:placeholder-shown {
     padding-left: 10px;
+    font-size: 15px;
   }
   .form-elements {
     display: flex;

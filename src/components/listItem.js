@@ -3,12 +3,16 @@ import styled from "styled-components";
 import ListAPI from "../api/list.api";
 import TodoList from "./todoList";
 import TodoCreator from "./todoCreator";
+import { AiFillDelete } from "react-icons/ai";
 
 const ListItem = ({ listID }) => {
   const [list, setList] = useState([]);
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+
   /* eslint-disable */
   useEffect(() => {
     ListAPI.SingleList(setList, setTodos, setIsLoading, listID);
@@ -18,36 +22,56 @@ const ListItem = ({ listID }) => {
     ListAPI.SingleList(setList, setTodos, setIsLoading, listID);
   }, [isUpdated]);
   /* eslint-enable */
-
+  const toggleVisibility = () => {
+    setIsExpanded((prev) => !prev);
+  };
   if (isLoading) {
     return <></>;
   }
-  return (
+
+  const handleListDelete = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    ListAPI.deleteList(setIsUpdated, setIsLoading, listID);
+  };
+  return !list.isArchieved ? (
     <SingleList>
-      <div className="list-details">
-        <h3 className="list-title">{list.title}</h3>
-        <p className="list-desc">{list.desc}</p>
+      <div className="list-container">
+        <div className="list-details" onClick={toggleVisibility}>
+          <h3 className="list-title">{list.title}</h3>
+          <p className="list-desc">{list.desc}</p>
+        </div>
+        <button className="del-icon" onClick={handleListDelete}>
+          <AiFillDelete />
+        </button>
       </div>
-      <div className="add-to-todo">
-        <TodoCreator
-          setIsUpdated={setIsUpdated}
-          setIsLoading={setIsLoading}
-          isToList={true}
-          listID={list._id}
-        />
-      </div>
-      <div className="todo-container">
-        <TodoList
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          isUpdated={isUpdated}
-          setIsUpdated={setIsUpdated}
-          todos={todos}
-          setTodos={setTodos}
-          hidden={true}
-        />
-      </div>
+
+      {isExpanded && (
+        <div>
+          <div className="add-to-todo">
+            <TodoCreator
+              setIsUpdated={setIsUpdated}
+              setIsLoading={setIsLoading}
+              isToList={true}
+              listID={list._id}
+            />
+          </div>
+          <div className="todo-container">
+            <TodoList
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              isUpdated={isUpdated}
+              setIsUpdated={setIsUpdated}
+              todos={todos}
+              setTodos={setTodos}
+              hidden={true}
+            />
+          </div>
+        </div>
+      )}
     </SingleList>
+  ) : (
+    <div></div>
   );
 };
 
@@ -58,12 +82,25 @@ const SingleList = styled.div`
   flex-direction: column;
   border-radius: 10px;
   width: 50vw;
-  margin: 50px auto;
+  margin: 15px auto;
   overflow: hidden;
   transition-duration: 0.4s;
   border: 1px solid lighgrey;
-  background: none;
 
+  .list-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+  }
+  .del-icon {
+    margin-bottom: 55px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    z-index: 70;
+  }
   .list-details {
     display: flex;
     flex-direction: column;
@@ -84,7 +121,7 @@ const SingleList = styled.div`
     & {
       min-width: 90vw;
       max-width: 90vw;
-      margin: 30px auto;
+      margin: 15px auto;
     }
   }
 `;

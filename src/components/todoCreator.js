@@ -101,7 +101,7 @@ const NewTodo = styled.div`
     & {
       min-width: 89vw;
       max-width: 89vw;
-      margin: 30px auto;
+      margin: 10px auto;
     }
   }
 `;
