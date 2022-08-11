@@ -22,7 +22,6 @@ const SearchTransaction = ({ search, setSearch }) => {
       <form className="search-form" onSubmit={handleSearch}>
         <input
           className="search-bar"
-          autoFocus
           placeholder="Search"
           id="searchBar"
           role="searchbox"
