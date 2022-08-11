@@ -38,12 +38,16 @@ const Register = ({ isAuthenticated, setIsAuthenticated }) => {
     AccountsAPI.register(registerData, setIsAuthenticated, setIsLoading);
   };
 
+  const handleToLogin = () => {
+    navigate("/accounts/login");
+  };
+
   if (isLoading) {
     return <Loading />;
   }
   return (
     <RegisterForm>
-      <h2 className="title">Join Noote</h2>
+      <h2 className="title">Join noote</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -72,9 +76,14 @@ const Register = ({ isAuthenticated, setIsAuthenticated }) => {
           }}
           value={password}
         />
-        <button type="submit" className="login-btn" onSubmit={handleSubmit}>
-          Create Account <HiArrowNarrowRight />
-        </button>
+        <div className="acc-navigations">
+          <button type="submit" className="login-btn" onClick={handleToLogin}>
+            Already have an account <HiArrowNarrowRight />
+          </button>
+          <button type="submit" className="login-btn" onClick={handleSubmit}>
+            Register <HiArrowNarrowRight />
+          </button>
+        </div>
       </form>
     </RegisterForm>
   );
@@ -96,6 +105,11 @@ const RegisterForm = styled.div`
     flex-direction: column;
     gap: 20px;
   }
+  .acc-navigations {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
   .input {
     border-radius: 7px;
@@ -108,6 +122,9 @@ const RegisterForm = styled.div`
   }
 
   .login-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     background-color: white;
     border: none;
     border-radius: 7px;

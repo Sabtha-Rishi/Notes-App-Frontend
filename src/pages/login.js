@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Loading from "../pages/loading";
 import { HiArrowNarrowRight } from "react-icons/hi";
-
 import AccountsAPI from "../api/accounts.api";
 
 const Login = ({ isAuthenticated, setIsAuthenticated }) => {
@@ -35,6 +34,9 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
     AccountsAPI.login(loginData, setIsAuthenticated, setIsLoading);
   };
 
+  const handleToRigister = () => {
+    navigate("/accounts/register");
+  };
   if (isLoading) {
     return <Loading />;
   }
@@ -60,9 +62,18 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
           }}
           value={password}
         />
-        <button type="submit" className="login-btn" onSubmit={handleSubmit}>
-          Login <HiArrowNarrowRight />
-        </button>
+        <div className="acc-navigations">
+          <button
+            type="submit"
+            className="login-btn"
+            onClick={handleToRigister}
+          >
+            New to noote <HiArrowNarrowRight />
+          </button>
+          <button type="submit" className="login-btn" onClick={handleSubmit}>
+            Login <HiArrowNarrowRight />
+          </button>
+        </div>
       </form>
     </LoginForm>
   );
@@ -79,6 +90,11 @@ const LoginForm = styled.div`
   min-height: 80vh;
   gap: 30px;
 
+  .acc-navigations {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   .login-form {
     display: flex;
     flex-direction: column;
@@ -96,6 +112,9 @@ const LoginForm = styled.div`
   }
 
   .login-btn {
+    display: flex;
+    align-items: center;
+    gap:5px;
     background-color: white;
     border: none;
     border-radius: 7px;

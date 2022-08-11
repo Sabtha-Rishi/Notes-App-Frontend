@@ -88,6 +88,5 @@ const FooterContainer = styled.div`
 
   .active {
     border: 2px solid black;
-    box-shadow: 1px 20px 25px #d9d9d9;
   }
 `;
