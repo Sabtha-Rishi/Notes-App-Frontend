@@ -4,6 +4,7 @@ import { FaSearch } from "react-icons/fa";
 
 const SearchTransaction = ({ search, setSearch }) => {
   const [tempSearch, setTempSearch] = useState(search);
+  /* eslint-disable */
 
   useEffect(() => {
     if (tempSearch === "") {
@@ -14,6 +15,8 @@ const SearchTransaction = ({ search, setSearch }) => {
     e.preventDefault();
     setSearch(tempSearch);
   };
+  /* eslint-enable */
+
   return (
     <SearchBar>
       <form className="search-form" onSubmit={handleSearch}>

@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// const BASE_URL = "https://noote-api.herokuapp.com/";
-const BASE_URL = "http://localhost:8000/";
+const BASE_URL = "https://noote-api.herokuapp.com/";
+// const BASE_URL = "http://localhost:8000/";
 
 const allTransactions = async (setTransactions, setIsLoading) => {
   try {
