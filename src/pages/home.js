@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Todo from "../tabs/todo";
 import List from "../tabs/list";
+import Money from "../tabs/money";
 
 import AccountsAPI from "../api/accounts.api";
 import Footer from "../components/footer";
@@ -16,7 +17,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
 
   const navigate = useNavigate();
 
-  const TABS_DATA = [<Todo />, "Money", "Trackers", <List />];
+  const TABS_DATA = [<Todo />, <Money />, "Trackers", <List />];
 
   console.log(TABS_DATA[tab]);
   /* eslint-disable */

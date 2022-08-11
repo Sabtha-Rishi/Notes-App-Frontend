@@ -31,7 +31,7 @@ const Footer = ({ tab, setTab }) => {
           onClick={switchTab}
         >
           {" "}
-          Track
+          Habits
         </button>
         <button
           className={tab === "3" ? "tab active" : "tab"}
@@ -65,14 +65,13 @@ const FooterContainer = styled.div`
   bottom: 0;
   margin-right: 10%;
   z-index: 100;
-  
 
   .tabs {
     display: flex;
     margin: 0 auto;
     width: 100%;
     max-width: 100%;
-    padding: 0 ;
+    padding: 0;
     /* gap:3px; */
     flex-direction: row;
     list-style: none;

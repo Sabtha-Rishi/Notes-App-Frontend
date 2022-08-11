@@ -1,18 +1,18 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// const BASE_URL = "https://noote-api.herokuapp.com/";
-const BASE_URL = "http://localhost:8000/";
+const BASE_URL = "https://noote-api.herokuapp.com/";
+// const BASE_URL = "http://localhost:8000/";
 
-const allTodos = async (setTodos, setIsLoading) => {
+const allTransactions = async (setTransactions, setIsLoading) => {
   try {
-    const response = await axios.create().get(`${BASE_URL}todo/`);
+    const response = await axios.create().get(`${BASE_URL}transaction/`);
 
     if (response.data.success) {
-      setTodos(response.data.todos);
+      setTransactions(response.data.transactions);
     }
     if (!response.data.success) {
-      console.log("couldn't fetch todos");
+      console.log("couldn't fetch transactions");
     }
   } catch (err) {
     console.log(err);
@@ -72,16 +72,17 @@ const deleteTodo = async (setIsUpdated, setIsLoading, todoID, setIsDeleted) => {
   }
 };
 
-const createTodo = async (setIsUpdated, setIsLoading, data, setNewTask) => {
+const createTransaction = async (setIsUpdated, setIsLoading, data) => {
   try {
-    const response = await axios.create().post(`${BASE_URL}todo/new`, data);
+    const response = await axios
+      .create()
+      .post(`${BASE_URL}transaction/new`, data);
 
     if (response.data.success) {
       setIsUpdated((prev) => !prev);
-      setNewTask("");
     }
     if (!response.data.success) {
-      console.log("couldn't create todo");
+      console.log("couldn't create transaction");
     }
   } catch (err) {
     console.log(err.message);
@@ -90,11 +91,11 @@ const createTodo = async (setIsUpdated, setIsLoading, data, setNewTask) => {
   }
 };
 
-const TodoAPI = {
-  allTodos,
+const TransactionAPI = {
+  allTransactions,
   updateTodo,
   deleteTodo,
-  createTodo,
+  createTransaction,
 };
 
-export default TodoAPI;
+export default TransactionAPI;
