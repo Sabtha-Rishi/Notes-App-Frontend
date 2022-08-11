@@ -11,7 +11,7 @@ const TransactionCreator = ({
 }) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Others");
   const [isProfit, setIsProfit] = useState(false);
 
   const toggleProfit = (e) => {
