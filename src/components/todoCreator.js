@@ -95,6 +95,7 @@ const NewTodo = styled.div`
     font-size: 30px;
     background: none;
     cursor: pointer;
+    color: #5397db;
   }
 
   @media only screen and (max-width: 600px) {
