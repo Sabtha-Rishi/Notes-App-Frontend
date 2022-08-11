@@ -12,7 +12,6 @@ const ListItem = ({ listID }) => {
   const [isUpdated, setIsUpdated] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
-
   /* eslint-disable */
   useEffect(() => {
     ListAPI.SingleList(setList, setTodos, setIsLoading, listID);
@@ -36,8 +35,8 @@ const ListItem = ({ listID }) => {
   };
   return !list.isArchieved ? (
     <SingleList>
-      <div className="list-container">
-        <div className="list-details" onClick={toggleVisibility}>
+      <div className="list-container" onClick={toggleVisibility}>
+        <div className="list-details" >
           <h3 className="list-title">{list.title}</h3>
           <p className="list-desc">{list.desc}</p>
         </div>

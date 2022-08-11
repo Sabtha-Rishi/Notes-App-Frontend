@@ -6,7 +6,7 @@ import Todo from "../tabs/todo";
 import List from "../tabs/list";
 
 import AccountsAPI from "../api/accounts.api";
-import Header from "../components/header";
+import Footer from "../components/footer";
 
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const [tab, setTab] = useState("");
@@ -35,7 +35,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   /* eslint-enable */
   return (
     <HomeContainer>
-      <Header tab={tab} setTab={setTab} />
+      <Footer tab={tab} setTab={setTab} />
       {TABS_DATA[parseInt(tab)]}
     </HomeContainer>
   );

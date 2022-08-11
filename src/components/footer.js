@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Header = ({ tab, setTab }) => {
+const Footer = ({ tab, setTab }) => {
   const switchTab = (e) => {
     setTab(e.target.value);
   };
   return (
-    <HeaderContainer>
+    <FooterContainer>
       <ul className="tabs">
         <button
           className={tab === "0" ? "tab active" : "tab"}
@@ -42,24 +42,23 @@ const Header = ({ tab, setTab }) => {
           List
         </button>
       </ul>
-    </HeaderContainer>
+    </FooterContainer>
   );
 };
 
-export default Header;
+export default Footer;
 
-const HeaderContainer = styled.div`
+const FooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 60px;
-  max-height: 90px;
   min-width: 100%;
   background-color: #f7f9fb;
-  position: sticky;
+  position: fixed;
   justify-content: center;
   padding: 0;
   margin: 0;
-  top: 0;
+  bottom: 0;
   margin-right: 10%;
   z-index: 100;
 
