@@ -1,25 +1,14 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Register from "./pages/register";
-import Loading from "./pages/loading";
-import Header from "./components/header";
 
-import AccountsAPI from "./api/accounts.api";
+import Header from "./components/header";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    AccountsAPI.isAuthenticated(setIsAuthenticated, setIsLoading);
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
 
   return (
     <Router>

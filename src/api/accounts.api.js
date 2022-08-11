@@ -124,7 +124,6 @@ const AccountsAPI = {
   //   updateUser,
   //   logout,
   isAuthenticated,
-  //   getSingleUser,
 };
 
 export default AccountsAPI;

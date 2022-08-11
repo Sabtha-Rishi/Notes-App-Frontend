@@ -72,7 +72,7 @@ const FooterContainer = styled.div`
     margin: 0 auto;
     width: 100%;
     max-width: 100%;
-    padding: 0 5px;
+    padding: 0 ;
     /* gap:3px; */
     flex-direction: row;
     list-style: none;

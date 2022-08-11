@@ -6,6 +6,7 @@ const header = () => {
   return (
     <HeaderContainer>
       <img className="logo" src={logo} alt="" />
+      <div className="user-branding"></div>
     </HeaderContainer>
   );
 };
@@ -17,7 +18,7 @@ const HeaderContainer = styled.div`
   padding-bottom: 10px;
   flex-direction: row;
   align-items: center;
-  padding:12px 0;
+  padding: 15px 0;
   max-height: 90px;
   min-width: 100vw;
   flex-wrap: nowrap;
