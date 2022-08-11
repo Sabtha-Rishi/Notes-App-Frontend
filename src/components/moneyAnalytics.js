@@ -14,6 +14,7 @@ const moneyAnalytics = ({ transactions }) => {
         loss = loss + transaction.amount;
       }
     });
+    return;
   };
   analyse();
   let balance = profit - loss;
@@ -24,11 +25,11 @@ const moneyAnalytics = ({ transactions }) => {
       <div className="analytics">
         <p className="analytics-variable">
           <FaMoneyBillWaveAlt />
-           {profit}
+          {profit}
         </p>
         <p className="analytics-variable">
           <RiShoppingCart2Fill />
-           {loss}
+          {loss}
         </p>
         <p className="analytics-variable">
           <FaPiggyBank /> {balance}
@@ -62,7 +63,7 @@ const Analytics = styled.div`
     font-size: small;
     opacity: 70%;
     display: flex;
-    gap:10px;
+    gap: 10px;
     align-items: center;
   }
 

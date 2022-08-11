@@ -1,8 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import CATEGORY_DATA from "../_DATA/CATEGORY_DATA";
-
-// import { IoTrophySharp } from "react-icons/io"
 
 const singleTransaction = ({ transaction, setIsUpdated }) => {
   return (
