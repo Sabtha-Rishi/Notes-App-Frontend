@@ -50,7 +50,7 @@ const Analytics = styled.div`
   transition-duration: 0.4s;
   background-color: #f7f9fb;
   border: 1px solid lighgrey;
-
+  margin-bottom: 0;
   .analytics {
     display: flex;
     flex-direction: row;
@@ -71,6 +71,7 @@ const Analytics = styled.div`
       min-width: 90vw;
       max-width: 90vw;
       margin: 30px auto;
+      margin-bottom: 0;
     }
   }
 `;

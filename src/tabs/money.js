@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loading from "../pages/loading";
 import TransactionAPI from "../api/transaction.api";
 import TransactionList from "../components/transactionList";
-import Analytics from "../components/moneyAnalytics";
+import SearchTransaction from "../components/searchTransactions";
 import TransactionCreator from "../components/transactionCreator";
 import { TiArrowSortedDown } from "react-icons/ti";
 import { TiArrowSortedUp } from "react-icons/ti";
@@ -11,6 +11,7 @@ const Money = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [isCreatorVisible, setIsCreatorVisible] = useState(false);
+  const [search, setSearch] = useState("");
 
   const [transactions, setTransactions] = useState([]);
   /* eslint-disable */
@@ -47,13 +48,20 @@ const Money = () => {
         <TransactionCreator
           setIsUpdated={setIsUpdated}
           setIsLoading={setIsLoading}
+          setIsCreatorVisible={setIsCreatorVisible}
         />
       )}
+      <SearchTransaction
+        transactions={transactions}
+        setTransactions={setTransactions}
+        search={search}
+        setSearch={setSearch}
+      />
       <TransactionList
         setIsUpdated={setIsUpdated}
         transactions={transactions}
+        search={search}
       />
-      <Analytics transactions={transactions} />
     </MoneyContainer>
   );
 };

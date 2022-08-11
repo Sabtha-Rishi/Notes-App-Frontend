@@ -4,7 +4,11 @@ import { BsArrowRight } from "react-icons/bs";
 import DATA from "../_DATA/CATEGORY_DATA";
 import TransactionAPI from "../api/transaction.api";
 
-const TransactionCreator = ({ setIsUpdated, setIsLoading }) => {
+const TransactionCreator = ({
+  setIsUpdated,
+  setIsLoading,
+  setIsCreatorVisible,
+}) => {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -25,7 +29,12 @@ const TransactionCreator = ({ setIsUpdated, setIsLoading }) => {
       category: category.toLowerCase(),
       isProfit: isProfit,
     };
-    TransactionAPI.createTransaction(setIsUpdated, setIsLoading, data);
+    TransactionAPI.createTransaction(
+      setIsUpdated,
+      setIsLoading,
+      data,
+      setIsCreatorVisible
+    );
   };
 
   return (

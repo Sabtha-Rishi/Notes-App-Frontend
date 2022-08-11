@@ -1,17 +1,23 @@
 import React from "react";
 import logo from "../media/noote dark.png";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-const header = () => {
+const Header = () => {
+  const navigate = useNavigate();
+
+  const toHome =()=>{
+    navigate('/')
+  }
   return (
     <HeaderContainer>
-      <img className="logo" src={logo} alt="" />
+      <img className="logo" src={logo} alt="" onClick={toHome} />
       <div className="user-branding"></div>
     </HeaderContainer>
   );
 };
 
-export default header;
+export default Header;
 
 const HeaderContainer = styled.div`
   display: flex;

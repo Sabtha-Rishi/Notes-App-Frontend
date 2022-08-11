@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const BASE_URL = "https://noote-api.herokuapp.com/";
-// const BASE_URL = "http://localhost:8000/";
+// const BASE_URL = "https://noote-api.herokuapp.com/";
+const BASE_URL = "http://localhost:8000/";
 
 const allTransactions = async (setTransactions, setIsLoading) => {
   try {
@@ -72,7 +72,12 @@ const deleteTodo = async (setIsUpdated, setIsLoading, todoID, setIsDeleted) => {
   }
 };
 
-const createTransaction = async (setIsUpdated, setIsLoading, data) => {
+const createTransaction = async (
+  setIsUpdated,
+  setIsLoading,
+  data,
+  setIsCreatorVisible
+) => {
   try {
     const response = await axios
       .create()
@@ -80,6 +85,7 @@ const createTransaction = async (setIsUpdated, setIsLoading, data) => {
 
     if (response.data.success) {
       setIsUpdated((prev) => !prev);
+      setIsCreatorVisible((prev) => !prev);
     }
     if (!response.data.success) {
       console.log("couldn't create transaction");

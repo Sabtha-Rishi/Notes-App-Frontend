@@ -1,12 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import Analytics from "../components/moneyAnalytics";
 
 import TransactionItem from "./singleTransaction";
 
-const AllTransactions = ({ setIsUpdated, transactions }) => {
+const AllTransactions = ({ setIsUpdated, transactions, search }) => {
+  const results = transactions.filter((transaction) => {
+    let key = search.toLowerCase();
+    return (
+      transaction.title.toLowerCase().includes(key) ||
+      transaction.category.includes(key) ||
+      transaction.amount < key ||
+      transaction.isProfit & (key === "earned") ||
+      !transaction.isProfit & (key === "spent")
+    );
+  });
+
   return (
     <TransactionContainer>
-      {transactions.map((transaction) => {
+      {results.map((transaction) => {
         return (
           <TransactionItem
             transaction={transaction}
@@ -15,6 +27,7 @@ const AllTransactions = ({ setIsUpdated, transactions }) => {
           />
         );
       })}
+      <Analytics transactions={results} />
     </TransactionContainer>
   );
 };
