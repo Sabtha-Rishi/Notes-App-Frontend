@@ -59,8 +59,13 @@ const FooterContainer = styled.div`
   padding: 0;
   margin: 0;
   bottom: 0;
+  left: 0;
+  width: 100%;
+  right: 0;
+  bottom: 0;
   margin-right: 10%;
   z-index: 100;
+  
 
   .tabs {
     display: flex;
