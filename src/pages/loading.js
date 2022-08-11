@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const loading = () => {
-  return (
-    <div>loading</div>
-  )
-}
+  return <div></div>;
+};
 
-export default loading
+export default loading;
