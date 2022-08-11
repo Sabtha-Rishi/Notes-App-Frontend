@@ -13,8 +13,8 @@ const moneyAnalytics = ({ transactions }) => {
       } else {
         loss = loss + transaction.amount;
       }
+      return;
     });
-    return;
   };
   analyse();
   let balance = profit - loss;
