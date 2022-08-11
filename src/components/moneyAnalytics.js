@@ -5,7 +5,7 @@ import { RiShoppingCart2Fill } from "react-icons/ri";
 const moneyAnalytics = ({ transactions }) => {
   let profit = 0;
   let loss = 0;
-
+  /* eslint-disable */
   const analyse = () => {
     transactions.map((transaction) => {
       if (transaction.isProfit) {
@@ -13,13 +13,12 @@ const moneyAnalytics = ({ transactions }) => {
       } else {
         loss = loss + transaction.amount;
       }
-      return;
     });
   };
   analyse();
   let balance = profit - loss;
   console.log(profit, loss, balance);
-
+  /* eslint-enable */
   return (
     <Analytics>
       <div className="analytics">
