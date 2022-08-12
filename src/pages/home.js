@@ -11,7 +11,7 @@ import AccountsAPI from "../api/accounts.api";
 import Footer from "../components/footer";
 
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
-  const [tab, setTab] = useState("");
+  const [tab, setTab] = useState("0");
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
