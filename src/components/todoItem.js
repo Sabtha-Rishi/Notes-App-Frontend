@@ -4,7 +4,7 @@ import Loading from "../pages/loading";
 
 import styled from "styled-components";
 
-const TodoItem = ({ todo, setIsUpdated, hidden }) => {
+const TodoItem = ({ todo, setIsUpdated, hidden, isDeletable }) => {
   const [isCompleted, setIsCompleted] = useState(todo.isCompleted);
   const [isDeleted, setIsDeleted] = useState(todo.isArchieved);
   const [isLoading, setIsLoading] = useState(false);
@@ -45,9 +45,12 @@ const TodoItem = ({ todo, setIsUpdated, hidden }) => {
           <div className="task">{todo.task}</div>
         )}
       </div>
-      <div className="delete" onClick={handleDelete}>
-        X
-      </div>
+
+      {isDeletable && (
+        <div className="delete" onClick={handleDelete}>
+          X
+        </div>
+      )}
     </SingleTodo>
   ) : (
     <div></div>

@@ -77,7 +77,7 @@ const Register = ({ isAuthenticated, setIsAuthenticated }) => {
           value={password}
         />
         <div className="acc-navigations">
-          <button type="submit" className="login-btn" onClick={handleToLogin}>
+          <button type="button" className="login-btn" onClick={handleToLogin}>
             Already have an account <HiArrowNarrowRight />
           </button>
           <button type="submit" className="login-btn" onClick={handleSubmit}>

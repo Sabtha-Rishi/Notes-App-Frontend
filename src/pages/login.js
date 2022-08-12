@@ -64,7 +64,7 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
         />
         <div className="acc-navigations">
           <button
-            type="submit"
+            type="button"
             className="login-btn"
             onClick={handleToRigister}
           >
@@ -114,7 +114,7 @@ const LoginForm = styled.div`
   .login-btn {
     display: flex;
     align-items: center;
-    gap:5px;
+    gap: 5px;
     background-color: white;
     border: none;
     border-radius: 7px;

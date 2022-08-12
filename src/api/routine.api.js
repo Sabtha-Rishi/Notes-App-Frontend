@@ -4,15 +4,15 @@ axios.defaults.withCredentials = true;
 // const BASE_URL = "http://localhost:8000/";
 const BASE_URL = "https://noote-api.herokuapp.com/";
 
-const allLists = async (setLists, setIsLoading) => {
+const allRoutines = async (setRoutines, setIsLoading) => {
   try {
-    const response = await axios.create().get(`${BASE_URL}list/`);
+    const response = await axios.create().get(`${BASE_URL}routine/`);
 
     if (response.data.success) {
-      setLists(response.data.lists);
+      setRoutines(response.data.routines);
     }
     if (!response.data.success) {
-      console.log("couldn't fetch lists");
+      console.log("couldn't fetch routines");
     }
   } catch (err) {
     console.log(err);
@@ -22,16 +22,17 @@ const allLists = async (setLists, setIsLoading) => {
   }
 };
 
-const SingleList = async (setList, setTodos, setIsLoading, listID) => {
-  console.log(listID);
+const SingleRoutine = async (setRoutine, setTodos, setIsLoading, routineID) => {
   try {
-    const response = await axios.create().get(`${BASE_URL}list/${listID}`);
+    const response = await axios
+      .create()
+      .get(`${BASE_URL}routine/${routineID}`);
     if (response.data.success) {
-      setList(response.data.list);
-      setTodos(response.data.todos);
+      setRoutine(response.data.routine);
+      setTodos(response.data.tasks);
     }
     if (!response.data.success) {
-      console.log("couldn't fetch list");
+      console.log("couldn't fetch routine");
       console.log(response.data);
     }
   } catch {
@@ -40,15 +41,20 @@ const SingleList = async (setList, setTodos, setIsLoading, listID) => {
   }
 };
 
-const createList = async (setIsUpdated, setIsLoading, data, setIsVisible) => {
+const createRoutine = async (
+  setIsUpdated,
+  setIsLoading,
+  data,
+  setIsVisible
+) => {
   try {
-    const response = await axios.create().post(`${BASE_URL}list/new`, data);
+    const response = await axios.create().post(`${BASE_URL}routine/new`, data);
     if (response.data.success) {
       setIsUpdated((prev) => !prev);
       setIsVisible(false);
     }
     if (!response.data.success) {
-      console.log("couldn't create list");
+      console.log("couldn't create routine");
       console.log(response.data);
     }
   } catch {
@@ -57,16 +63,16 @@ const createList = async (setIsUpdated, setIsLoading, data, setIsVisible) => {
   }
 };
 
-const addToList = async (setIsUpdated, setIsLoading, data) => {
+const addToRoutine = async (setIsUpdated, setIsLoading, data) => {
   try {
     const response = await axios
       .create()
-      .post(`${BASE_URL}list/add-todo`, data);
+      .post(`${BASE_URL}routine/add-todo`, data);
     if (response.data.success) {
       setIsUpdated((prev) => !prev);
     }
     if (!response.data.success) {
-      console.log("couldn't add todo to list");
+      console.log("couldn't add todo to routine");
       console.log(response.data);
     }
   } catch {
@@ -75,11 +81,11 @@ const addToList = async (setIsUpdated, setIsLoading, data) => {
   }
 };
 
-const deleteList = async (setIsUpdated, setIsLoading, listID) => {
+const deleteRoutine = async (setIsUpdated, setIsLoading, routineID) => {
   try {
     const response = await axios
       .create()
-      .post(`${BASE_URL}list/${listID}/update`, {
+      .post(`${BASE_URL}list/${routineID}/update`, {
         isArchieved: true,
       });
 
@@ -87,7 +93,7 @@ const deleteList = async (setIsUpdated, setIsLoading, listID) => {
       setIsUpdated((prev) => !prev);
     }
     if (!response.data.success) {
-      console.log("couldn't delete list");
+      console.log("couldn't delete routine");
     }
   } catch (err) {
     console.log(err.message);
@@ -96,12 +102,12 @@ const deleteList = async (setIsUpdated, setIsLoading, listID) => {
   }
 };
 
-const ListAPI = {
-  allLists,
-  SingleList,
-  deleteList,
-  createList,
-  addToList,
+const RoutineAPI = {
+  allRoutines,
+  SingleRoutine,
+  deleteRoutine,
+  createRoutine,
+  addToRoutine,
 };
 
-export default ListAPI;
+export default RoutineAPI;

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Todo from "../tabs/todo";
 import List from "../tabs/list";
 import Money from "../tabs/money";
+import Routine from "../tabs/routine";
 
 import AccountsAPI from "../api/accounts.api";
 import Footer from "../components/footer";
@@ -12,14 +13,11 @@ import Footer from "../components/footer";
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   const [tab, setTab] = useState("");
   const [user, setUser] = useState({});
-
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
-  const TABS_DATA = [<Todo />, <Money />, "Trackers", <List />];
-
-  console.log(TABS_DATA[tab]);
+  const TABS_DATA = [<Todo />, <Money />, <Routine user={user} />, <List />];
   /* eslint-disable */
 
   useEffect(() => {
@@ -32,7 +30,6 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
     }
   }, [isAuthenticated]);
 
-  console.log(user);
   /* eslint-enable */
   return (
     <HomeContainer>

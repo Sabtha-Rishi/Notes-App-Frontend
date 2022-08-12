@@ -31,7 +31,7 @@ const Footer = ({ tab, setTab }) => {
           onClick={switchTab}
         >
           {" "}
-          Habits
+          Today
         </button>
         <button
           className={tab === "3" ? "tab active" : "tab"}

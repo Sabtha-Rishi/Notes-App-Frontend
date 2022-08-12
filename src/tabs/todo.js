@@ -37,6 +37,7 @@ const Todo = () => {
         todos={todos}
         setTodos={setTodos}
         hidden={false}
+        isDeletable={true}
       />
     </div>
   );

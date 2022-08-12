@@ -10,7 +10,8 @@ const AllTodos = ({
   setIsUpdated,
   todos,
   setTodos,
-  hidden
+  hidden,
+  isDeletable,
 }) => {
   return (
     <TodoContainer>
@@ -21,6 +22,7 @@ const AllTodos = ({
             key={todo._id}
             setIsUpdated={setIsUpdated}
             hidden={hidden}
+            isDeletable={isDeletable}
           />
         );
       })}
