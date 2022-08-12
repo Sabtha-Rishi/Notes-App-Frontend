@@ -3,12 +3,14 @@ import styled from "styled-components";
 
 const ProgressBar = ({ todos }) => {
   let completed = 0;
+  /* eslint-disable */
 
   todos.map((todo) => {
     if (todo.isCompleted) {
       completed = completed + 1;
     }
   });
+  /* eslint-enable */
 
   return (
     <Bar>

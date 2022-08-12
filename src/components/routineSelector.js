@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 const RoutineSelector = ({ routines, setRoutineId, routine }) => {
   const ROUTINES_DATA = {};
+  /* eslint-disable */
 
   routines.map((tempRoutine) => {
     ROUTINES_DATA[tempRoutine.name] = tempRoutine._id;
@@ -13,6 +14,8 @@ const RoutineSelector = ({ routines, setRoutineId, routine }) => {
     setRoutineId(ROUTINES_DATA[e.target.value]);
     console.log(routine);
   };
+  /* eslint-enable */
+
   return (
     <Selector>
       <form>
