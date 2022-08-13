@@ -34,6 +34,16 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
     AccountsAPI.login(loginData, setIsAuthenticated, setIsLoading);
   };
 
+  const handleSubmitSample = (e) => {
+    const sampleData = {
+      email: "krithi@gmail.com",
+      password: "krithi1234",
+    };
+    e.preventDefault();
+    setIsLoading(true);
+    AccountsAPI.login(sampleData, setIsAuthenticated, setIsLoading);
+  };
+
   const handleToRigister = () => {
     navigate("/accounts/register");
   };
@@ -72,6 +82,14 @@ const Login = ({ isAuthenticated, setIsAuthenticated }) => {
           </button>
           <button type="submit" className="login-btn" onClick={handleSubmit}>
             Login <HiArrowNarrowRight />
+          </button>
+
+          <button
+            type="submit"
+            className="login-btn"
+            onClick={handleSubmitSample}
+          >
+            Sample Account <HiArrowNarrowRight />
           </button>
         </div>
       </form>
