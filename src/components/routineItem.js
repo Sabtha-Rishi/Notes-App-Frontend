@@ -2,15 +2,21 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import RoutineAPI from "../api/routine.api";
 import TodoList from "./todoList";
+import TodoCreator from "./todoCreator";
+
 import RoutineSelector from "./routineSelector";
 import ProgressBar from "./progressBar";
+import { AiFillEdit } from "react-icons/ai";
 
-const RoutineItem = ({ routines, user }) => {
-  const [routineId, setRoutineId] = useState(user.defaultRoutine);
+const RoutineItem = ({ routines, user, isUpdated, setIsUpdated }) => {
+  const [routineId, setRoutineId] = useState(
+    user.defaultRoutine || routines[0]._id
+  );
   const [routine, setRoutine] = useState({});
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isUpdated, setIsUpdated] = useState(false);
+  const [isDeletable, setIsDeletable] = useState(true);
+  const [isEdited, setIsEdited] = useState(false);
 
   /* eslint-disable */
   useEffect(() => {
@@ -20,11 +26,18 @@ const RoutineItem = ({ routines, user }) => {
   useEffect(() => {
     RoutineAPI.SingleRoutine(setRoutine, setTodos, setIsLoading, routineId);
   }, [isUpdated]);
+  useEffect(() => {
+    RoutineAPI.SingleRoutine(setRoutine, setTodos, setIsLoading, routineId);
+  }, [isEdited]);
 
   useEffect(() => {
     RoutineAPI.SingleRoutine(setRoutine, setTodos, setIsLoading, routineId);
   }, [routineId]);
   /* eslint-enable */
+
+  const toggleEditing = () => {
+    setIsDeletable((prev) => !prev);
+  };
 
   if (isLoading) {
     return <></>;
@@ -33,26 +46,38 @@ const RoutineItem = ({ routines, user }) => {
   return !routine.isArchieved ? (
     <SingleRoutine>
       <div className="routine-details">
-        <h3 className="routine-title">{routine.name}</h3>
+        {/* <h3 className="routine-title">{routine.name}</h3> */}
 
-        <div className="routine-selector">
+        <div className="routine-title">
           <RoutineSelector
             routines={routines}
             routine={routine}
             setRoutineId={setRoutineId}
           />
         </div>
+        <button className="edit-btn" onClick={toggleEditing}>
+          <AiFillEdit />
+        </button>
       </div>
 
       <div className="todo-container">
+        {isDeletable && (
+          <TodoCreator
+            setIsUpdated={setIsEdited}
+            setIsLoading={setIsLoading}
+            listID={routineId}
+            isToRoutine={true}
+          />
+        )}
         <TodoList
           isLoading={isLoading}
           setIsLoading={setIsLoading}
-          isUpdated={isUpdated}
-          setIsUpdated={setIsUpdated}
+          isUpdated={isEdited}
+          setIsUpdated={setIsEdited}
           todos={todos}
           setTodos={setTodos}
           hidden={true}
+          isDeletable={isDeletable}
         />
       </div>
 
@@ -86,8 +111,12 @@ const SingleRoutine = styled.div`
   .routine-title {
     font-weight: bold;
     margin: 0;
-    margin-left: 10px;
     text-transform: capitalize;
+  }
+  .edit-btn {
+    border: none;
+    background: none;
+    font-size: 17px;
   }
   .add-to-todo {
     margin-right: 10px;

@@ -4,6 +4,10 @@ import Loading from "../pages/loading";
 import RoutineAPI from "../api/routine.api";
 import RoutineItem from "../components/routineItem";
 
+import RoutineCreator from "../components/routineCreator";
+import { TiArrowSortedDown } from "react-icons/ti";
+import { TiArrowSortedUp } from "react-icons/ti";
+
 const AllRoutines = ({
   isLoading,
   isUpdated,
@@ -12,6 +16,8 @@ const AllRoutines = ({
   user,
 }) => {
   const [routines, setRoutines] = useState([]);
+  const [isCreatorVisible, setIsCreatorVisible] = useState(false);
+
   /* eslint-disable */
   useEffect(() => {
     RoutineAPI.allRoutines(setRoutines, setIsLoading);
@@ -21,13 +27,40 @@ const AllRoutines = ({
     RoutineAPI.allRoutines(setRoutines, setIsLoading);
   }, [isUpdated]);
   /* eslint-enable */
+  const toggleVisibility = () => {
+    setIsCreatorVisible((prev) => !prev);
+  };
   if (isLoading) {
     return <Loading />;
   }
 
   return (
     <RoutineContainer>
-      <RoutineItem routines={routines} user={user} />
+      <button className="create-list-btn" onClick={toggleVisibility}>
+        {!isCreatorVisible ? (
+          <p className="btn-text">
+            New <TiArrowSortedDown />
+          </p>
+        ) : (
+          <p className="btn-text">
+            Close <TiArrowSortedUp />
+          </p>
+        )}
+      </button>
+
+      {isCreatorVisible && (
+        <RoutineCreator
+          setIsUpdated={setIsUpdated}
+          setIsLoading={setIsLoading}
+          setIsCreatorVisible={setIsCreatorVisible}
+        />
+      )}
+      <RoutineItem
+        routines={routines}
+        user={user}
+        setIsUpdated={setIsUpdated}
+        isUpdated={isUpdated}
+      />
     </RoutineContainer>
   );
 };

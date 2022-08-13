@@ -40,10 +40,10 @@ const Selector = styled.div`
     background: none;
     outline: none;
     display: flex;
-    width: 150px;
     height: 30px;
     border: none;
-    color: #5397db;
+    color: black;
     text-transform: capitalize;
+    font-size: large;
   }
 `;

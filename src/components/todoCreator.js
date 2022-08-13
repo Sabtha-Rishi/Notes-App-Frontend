@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import TodoAPI from "../api/todo.api";
 import ListAPI from "../api/list.api";
+import RoutineAPI from "../api/routine.api";
 
-const TodoCreator = ({ setIsUpdated, setIsLoading, isToList, listID }) => {
+const TodoCreator = ({
+  setIsUpdated,
+  setIsLoading,
+  isToList,
+  listID,
+  isToRoutine,
+}) => {
   const [newTask, setNewTask] = useState("");
 
   const createTodo = (e) => {
@@ -17,6 +24,10 @@ const TodoCreator = ({ setIsUpdated, setIsLoading, isToList, listID }) => {
     if (isToList) {
       data.listID = listID;
       ListAPI.addToList(setIsUpdated, setIsLoading, data);
+    }
+    else if (isToRoutine) {
+      data.routineID = listID 
+      RoutineAPI.addToRoutine(setIsUpdated, setIsLoading, data);
     } else {
       TodoAPI.createTodo(setIsUpdated, setIsLoading, data, setNewTask);
     }

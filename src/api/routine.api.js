@@ -75,7 +75,8 @@ const addToRoutine = async (setIsUpdated, setIsLoading, data) => {
       console.log("couldn't add todo to routine");
       console.log(response.data);
     }
-  } catch {
+  } catch (err) {
+    console.log(err);
   } finally {
     setIsLoading(false);
   }
