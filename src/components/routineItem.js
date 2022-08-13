@@ -15,7 +15,7 @@ const RoutineItem = ({ routines, user, isUpdated, setIsUpdated }) => {
   const [routine, setRoutine] = useState({});
   const [todos, setTodos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isDeletable, setIsDeletable] = useState(true);
+  const [isDeletable, setIsDeletable] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
 
   /* eslint-disable */
