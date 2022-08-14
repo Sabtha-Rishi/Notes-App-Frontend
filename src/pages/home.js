@@ -9,9 +9,10 @@ import Routine from "../tabs/routine";
 
 import AccountsAPI from "../api/accounts.api";
 import Footer from "../components/footer";
+import HomeScreen from "../components/homeScreen";
 
 const Home = ({ isAuthenticated, setIsAuthenticated }) => {
-  const [tab, setTab] = useState("0");
+  const [tab, setTab] = useState("");
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,7 +35,16 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
   return (
     <HomeContainer>
       <Footer tab={tab} setTab={setTab} />
-      {TABS_DATA[parseInt(tab)]}
+
+      {tab == "" ? (
+        <HomeScreen
+          user={user}
+          setTab={setTab}
+          setIsAuthenticated={setIsAuthenticated}
+        />
+      ) : (
+        TABS_DATA[parseInt(tab)]
+      )}
     </HomeContainer>
   );
 };

@@ -24,6 +24,7 @@ const RoutineSelector = ({ routines, setRoutineId, routine, routineId }) => {
           name="routine"
           onChange={onChange}
           defaultValue={ROUTINES_DATA[routineId]}
+          defaultChecked="true"
         >
           {routines.map((routine) => {
             return (

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { GiStoneTablet } from "react-icons/gi";
 axios.defaults.withCredentials = true;
 
 const BASE_URL = "https://noote-api.herokuapp.com/";
@@ -38,22 +39,22 @@ const login = async (data, setIsAuthenticated, setIsLoading) => {
   }
 };
 
-// const logout = async (setIsAuthenticated, setUser) => {
-//   try {
-//     const response = await axios.create().post(`${BASE_URL}accounts/logout/`);
+const logout = async (setIsAuthenticated, setUser, navigate) => {
+  try {
+    const response = await axios.create().post(`${BASE_URL}accounts/logout/`);
 
-//     if (response.data.isSuccess) {
-//       setIsAuthenticated(false);
-//       setUser({});
-//     }
-//     if (!response.data.isSuccess) {
-//       setIsAuthenticated(true);
-//     }
-//   } catch (err) {
-//     // console.log(err.message);
-//     // setIsAuthenticated(true);
-//   }
-// };
+    if (response.data.success) {
+      setIsAuthenticated(false);
+      setUser({});
+      navigate("accounts/login");
+    }
+    if (!response.data.isSuccess) {
+      setIsAuthenticated(true);
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
 const getUser = async (setIsAuthenticated, setUser, setIsLoading, navigate) => {
   console.log(setIsAuthenticated, "test");
@@ -99,30 +100,11 @@ const isAuthenticated = async (setIsAuthenticated, setIsLoading) => {
   }
 };
 
-// const updateUser = async (setIsUpdated, data, setUser, setIsEditing) => {
-//   try {
-//     const response = await axios.create().post(`${BASE_URL}user/update/`, data);
-
-//     if (response.data.isUpdated) {
-//       setIsUpdated(true);
-//       setUser(response.data.user);
-//       setIsEditing(false);
-//       return;
-//     }
-//     if (!response.data.isUpdated) {
-//     }
-//   } catch (err) {
-//     console.log(err.message);
-//   } finally {
-//   }
-// };
-
 const AccountsAPI = {
   register,
   login,
   getUser,
-  //   updateUser,
-  //   logout,
+  logout,
   isAuthenticated,
 };
 
