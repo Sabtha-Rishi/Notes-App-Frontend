@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TodoAPI from "../api/todo.api";
-import Loading from "../pages/loading";
 
 import styled from "styled-components";
 
@@ -26,7 +25,7 @@ const TodoItem = ({ todo, setIsUpdated, hidden, isDeletable }) => {
   };
 
   if (isLoading) {
-    return <Loading />;
+    return <></>
   }
   return !isDeleted & (todo.isHidden === hidden) ? (
     <SingleTodo>
