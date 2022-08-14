@@ -14,13 +14,13 @@ export default loading;
 
 const LoadingPage = styled.div`
   min-width: 100vw;
-  min-height: 90vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
   .loader {
-    width: 300px;
+    width: 200px;
     margin: 0;
   }
 `;
