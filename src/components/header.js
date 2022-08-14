@@ -1,13 +1,10 @@
 import React from "react";
 import logo from "../media/noote dark.png";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const navigate = useNavigate();
-
   const toHome = () => {
-    window.location("/");
+    window.location.reload();
   };
   return (
     <HeaderContainer>

@@ -79,8 +79,9 @@ const FooterContainer = styled.div`
     justify-content: space-between;
     margin-right: 5px;
   }
-
+  
   .tab {
+    cursor: pointer;
     width: 100%;
     color: black;
     text-align: center;
