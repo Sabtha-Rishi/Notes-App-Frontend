@@ -17,7 +17,7 @@ const RoutineItem = ({ routines, user, isUpdated, setIsUpdated }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isDeletable, setIsDeletable] = useState(false);
   const [isEdited, setIsEdited] = useState(false);
-  console.log(user.defaultRoutine, "default routine");
+  
   /* eslint-disable */
   useEffect(() => {
     RoutineAPI.SingleRoutine(setRoutine, setTodos, setIsLoading, routineId);

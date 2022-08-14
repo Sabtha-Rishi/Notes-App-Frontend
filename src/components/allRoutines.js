@@ -20,10 +20,12 @@ const AllRoutines = ({
 
   /* eslint-disable */
   useEffect(() => {
+    setIsLoading(true)
     RoutineAPI.allRoutines(setRoutines, setIsLoading);
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     RoutineAPI.allRoutines(setRoutines, setIsLoading);
   }, [isUpdated]);
   /* eslint-enable */
