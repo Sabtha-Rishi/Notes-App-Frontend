@@ -90,8 +90,8 @@ const Home = styled.div`
     gap: 5px;
     text-align: center;
     font-weight: bold;
-    margin-top: auto;
     font-size: small;
+    margin: 20px auto;
   }
   .gif {
     display: flex;
@@ -152,6 +152,11 @@ const Home = styled.div`
       min-width: 90vw;
       max-width: 90vw;
       margin: 30px auto;
+    }
+
+    .container{
+      width: 80vw;
+      height:80vw
     }
   }
 `;
