@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { AiFillHeart } from "react-icons/ai";
 import { RiTaskFill, RiTimer2Fill } from "react-icons/ri";
 import { FaPiggyBank, FaClipboardList } from "react-icons/fa";
 // import gif from "../media/home.gif";
@@ -50,11 +49,7 @@ const HomeScreen = ({ user, setTab, setIsAuthenticated, setUser }) => {
       <button class="logout" onClick={handleLogout}>
         Logout <HiArrowNarrowRight />
       </button>
-      <p className="footer-branding">
-        {" "}
-        Made with <AiFillHeart />
-        by Sabtha Rishi
-      </p>
+     
     </Home>
   );
 };

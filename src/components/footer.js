@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+
 const Footer = ({ tab, setTab }) => {
   const switchTab = (e) => {
     setTab(e.target.value);
@@ -42,6 +43,7 @@ const Footer = ({ tab, setTab }) => {
           List
         </button>
       </ul>
+     
     </FooterContainer>
   );
 };
@@ -50,7 +52,7 @@ export default Footer;
 
 const FooterContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 60px;
   min-width: 100%;
   background-color: #f7f9fb;
