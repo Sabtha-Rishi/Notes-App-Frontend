@@ -154,9 +154,9 @@ const Home = styled.div`
       margin: 30px auto;
     }
 
-    .container{
+    .container {
       width: 80vw;
-      height:80vw
+      height: 80vw;
     }
   }
 `;

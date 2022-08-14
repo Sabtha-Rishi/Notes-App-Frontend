@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
 
-  const toHome =()=>{
-    navigate('/')
-  }
+  const toHome = () => {
+    window.location("/");
+  };
   return (
     <HeaderContainer>
       <img className="logo" src={logo} alt="" onClick={toHome} />
@@ -37,5 +37,6 @@ const HeaderContainer = styled.div`
 
   .logo {
     width: 100px;
+    cursor: pointer;
   }
 `;
