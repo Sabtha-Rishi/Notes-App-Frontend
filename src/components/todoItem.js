@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TodoAPI from "../api/todo.api";
-import gif from "../media/loading-todo.gif";
 
 import styled from "styled-components";
 
