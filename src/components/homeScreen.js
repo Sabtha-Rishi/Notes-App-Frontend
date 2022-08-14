@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { AiFillHeart } from "react-icons/ai";
 import { RiTaskFill, RiTimer2Fill } from "react-icons/ri";
 import { FaPiggyBank, FaClipboardList } from "react-icons/fa";
-import gif from "../media/home.gif";
+// import gif from "../media/home.gif";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import AccountsAPI from "../api/accounts.api";
 import { useNavigate } from "react-router-dom";
@@ -26,9 +26,9 @@ const HomeScreen = ({ user, setTab, setIsAuthenticated, setUser }) => {
   return (
     <Home>
       <div className="user-details">
-        <h2 className="welcome-title">Hi, {user.name}</h2>
+        <h2 className="welcome-title">Hi, {user.name} 👋🏻</h2>
       </div>
-      <img src={gif} className="gif" alt="" />
+      {/* <img src={gif} className="gif" alt="" /> */}
       <div class="container">
         <button class="box" value="0" onClick={switchTab}>
           <RiTaskFill />
@@ -66,6 +66,7 @@ const Home = styled.div`
   flex-direction: column;
   border-radius: 10px;
   width: 50vw;
+  height: 100vh;
   margin: 50px auto;
   overflow: hidden;
   transition-duration: 0.4s;
@@ -74,11 +75,12 @@ const Home = styled.div`
   background-color: #fff;
   border: 1px solid lighgrey;
   align-items: center;
+  justify-content: center;
 
   .welcome-title {
     font-weight: bold;
     text-align: center;
-    margin: 0;
+    margin: auto;
   }
 
   .footer-branding {
@@ -104,10 +106,12 @@ const Home = styled.div`
     height: 300px;
     background-color: #fff;
     display: grid;
-    grid-template-columns: 150px 150px;
+    grid-template-columns: 1fr 1fr;
     grid-row: auto auto;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
+    margin: auto;
+
     .box {
       background-color: #f7f9fb;
       border: none;
@@ -118,14 +122,21 @@ const Home = styled.div`
       color: #000;
       gap: 10px;
       display: flex;
+      transition: transform 0.2s;
       align-items: center;
       justify-content: center;
       font-size: 20px;
       cursor: pointer;
     }
+    .box:hover {
+      transform: scale(1.1);
+      background-color: #000;
+      color: #fff;
+    }
   }
 
   .logout {
+    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
