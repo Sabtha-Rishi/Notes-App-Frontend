@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TodoAPI from "../api/todo.api";
+import gif from "../media/loading-todo.gif";
 
 import styled from "styled-components";
 
@@ -24,9 +25,6 @@ const TodoItem = ({ todo, setIsUpdated, hidden, isDeletable }) => {
     TodoAPI.deleteTodo(setIsUpdated, setIsLoading, todo._id, setIsDeleted);
   };
 
-  if (isLoading) {
-    return <></>
-  }
   return !isDeleted & (todo.isHidden === hidden) ? (
     <SingleTodo>
       <div className="todo-item">
@@ -39,9 +37,13 @@ const TodoItem = ({ todo, setIsUpdated, hidden, isDeletable }) => {
           <button className="checkbox" onClick={handleComplete}></button>
         )}
         {todo.isCompleted ? (
-          <div className="task-complete">{todo.task}</div>
+          <div
+            className={isLoading ? "task-complete loading" : "task-complete"}
+          >
+            {todo.task}
+          </div>
         ) : (
-          <div className="task">{todo.task}</div>
+          <div className={isLoading ? "task loading" : "task"}>{todo.task}</div>
         )}
       </div>
 
@@ -88,6 +90,9 @@ const SingleTodo = styled.div`
     font-size: 15px;
     opacity: 50%;
   }
+  .loading {
+    animation: blinker 1s linear infinite;
+  }
   .complete {
     background-color: #5397db;
   }
@@ -95,5 +100,11 @@ const SingleTodo = styled.div`
     font-size: 15px;
     cursor: pointer;
     margin-left: 10px;
+  }
+
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
   }
 `;

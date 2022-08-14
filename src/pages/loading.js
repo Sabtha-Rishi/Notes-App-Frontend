@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import gif from "../media/loading.gif";
+import gif from "../media/loading2.gif";
 
 const loading = () => {
   return (
