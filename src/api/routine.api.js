@@ -1,8 +1,8 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-// const BASE_URL = "http://localhost:8000/";
-const BASE_URL = "https://noote-api.herokuapp.com/";
+const BASE_URL = "http://localhost:8000/";
+// const BASE_URL = "https://noote-api.herokuapp.com/";
 
 const allRoutines = async (setRoutines, setIsLoading) => {
   try {
@@ -86,7 +86,7 @@ const deleteRoutine = async (setIsUpdated, setIsLoading, routineID) => {
   try {
     const response = await axios
       .create()
-      .post(`${BASE_URL}list/${routineID}/update`, {
+      .post(`${BASE_URL}routine/${routineID}/update`, {
         isArchieved: true,
       });
 
@@ -103,12 +103,52 @@ const deleteRoutine = async (setIsUpdated, setIsLoading, routineID) => {
   }
 };
 
+const setDefault = async (setIsUpdated, setIsLoading, routineID) => {
+  try {
+    const response = await axios
+      .create()
+      .post(`${BASE_URL}routine/${routineID}/set-default`);
+
+    if (response.data.success) {
+      setIsUpdated((prev) => !prev);
+    }
+    if (!response.data.success) {
+      console.log("couldn't set as default");
+    }
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
+const reset = async (setIsUpdated, setIsLoading, routineID) => {
+  try {
+    const response = await axios
+      .create()
+      .post(`${BASE_URL}routine/${routineID}/reset`);
+
+    if (response.data.success) {
+      setIsUpdated((prev) => !prev);
+    }
+    if (!response.data.success) {
+      console.log("couldn't reset routine");
+    }
+  } catch (err) {
+    console.log(err.message);
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 const RoutineAPI = {
   allRoutines,
+  reset,
   SingleRoutine,
   deleteRoutine,
   createRoutine,
   addToRoutine,
+  setDefault,
 };
 
 export default RoutineAPI;

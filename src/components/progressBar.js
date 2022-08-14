@@ -3,18 +3,24 @@ import styled from "styled-components";
 
 const ProgressBar = ({ todos }) => {
   let completed = 0;
+  let total = 0;
   /* eslint-disable */
 
   todos.map((todo) => {
-    if (todo.isCompleted) {
-      completed = completed + 1;
+    if (!todo.isArchieved) {
+      total = total + 1;
+      if (todo.isCompleted) {
+        completed = completed + 1;
+      }
     }
   });
   /* eslint-enable */
 
   return (
     <Bar>
-      <progress className="progress-bar" value={completed} max={todos.length} />
+      {completed > 0 && (
+        <progress className="progress-bar" value={completed} max={total} />
+      )}
     </Bar>
   );
 };

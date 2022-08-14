@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const RoutineSelector = ({ routines, setRoutineId, routine }) => {
+const RoutineSelector = ({ routines, setRoutineId, routine, routineId }) => {
   const ROUTINES_DATA = {};
   /* eslint-disable */
 
@@ -19,7 +19,12 @@ const RoutineSelector = ({ routines, setRoutineId, routine }) => {
   return (
     <Selector>
       <form>
-        <select className="routine" name="routine" onChange={onChange}>
+        <select
+          className="routine"
+          name="routine"
+          onChange={onChange}
+          defaultValue={ROUTINES_DATA[routineId]}
+        >
           {routines.map((routine) => {
             return (
               <option className="input-option" name="category">
@@ -44,6 +49,7 @@ const Selector = styled.div`
     border: none;
     color: black;
     text-transform: capitalize;
+    cursor: pointer;
     font-size: large;
   }
 `;
