@@ -36,7 +36,7 @@ const Home = ({ isAuthenticated, setIsAuthenticated }) => {
     <HomeContainer>
       <Footer tab={tab} setTab={setTab} />
 
-      {tab == "" ? (
+      {tab === "" ? (
         <HomeScreen
           user={user}
           setTab={setTab}

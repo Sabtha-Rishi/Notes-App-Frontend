@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GiStoneTablet } from "react-icons/gi";
 axios.defaults.withCredentials = true;
 
 const BASE_URL = "https://noote-api.herokuapp.com/";
