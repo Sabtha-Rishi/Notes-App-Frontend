@@ -29,6 +29,7 @@ const SingleRoutine = async (setRoutine, setTodos, setIsLoading, routineID) => {
       .get(`${BASE_URL}routine/${routineID}`);
     if (response.data.success) {
       setRoutine(response.data.routine);
+      
       setTodos(response.data.tasks);
     }
     if (!response.data.success) {

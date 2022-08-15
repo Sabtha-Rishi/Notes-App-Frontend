@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-const RoutineSelector = ({ routines, setRoutineId, routine, routineId }) => {
+const RoutineSelector = ({
+  routines,
+  setRoutineId,
+  routine,
+  routineId,
+  setIsUpdated,
+}) => {
   const ROUTINES_DATA = {};
   /* eslint-disable */
 
@@ -12,6 +18,7 @@ const RoutineSelector = ({ routines, setRoutineId, routine, routineId }) => {
 
   const onChange = (e) => {
     setRoutineId(ROUTINES_DATA[e.target.value]);
+    setIsUpdated((prev) => !prev);
     console.log(routine);
   };
   /* eslint-enable */

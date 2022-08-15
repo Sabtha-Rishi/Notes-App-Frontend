@@ -63,6 +63,7 @@ const RoutineItem = ({ routines, user, isUpdated, setIsUpdated }) => {
             routine={routine}
             setRoutineId={setRoutineId}
             routineId={routineId}
+            setIsUpdated = {setIsEdited}
           />
         </div>
         <button className="edit-btn" onClick={toggleEditing}>
