@@ -1,7 +1,7 @@
 import axios from "axios";
 axios.defaults.withCredentials = true;
 
-const BASE_URL = "https://plankton-app-smg2s.ondigitalocean.app/";
+const BASE_URL = "https://noote-api.herokuapp.com/";
 // const BASE_URL = "http://localhost:8000/";
 
 const register = async (newUser, setIsAuthenticated, setIsLoading) => {
